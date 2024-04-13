@@ -29,7 +29,6 @@ class Dice(commands.Cog):
             await ctx.send("Please input a roll argument")
             return
 
-        #print(self.resolve_bool_roll(args))
         message = "<@{}> ".format(ctx.author.id) + self.resolve_bool_roll(args)
         await ctx.send(message)
 
@@ -54,22 +53,32 @@ class Dice(commands.Cog):
             return
 
         if self.find_inline_roll(message.content) and not (message.author.bot):
-            reply = "<@{}> ".format(message.author.id) + " "
-            for x in self.find_inline_roll(message.content):
+            inline_rolls = self.find_inline_roll(message.content)
+
+            if len(inline_rolls) == 1 and "||" in inline_rolls[0]:
+                reply = "||<@{}>||".format(message.author.id) 
+            else:    
+                reply = "<@{}> ".format(message.author.id) 
+
+            if len(inline_rolls) > 1:
+                reply += "\n"
+
+            for x in inline_rolls:
                 if "||" in x:
                     y = x.replace("||", "")
                     reply += (
                         "||"
                         + (
                             self.resolve_bool_roll(y.split()).replace(": ", "", 1)
-                            + "\n"
                         )
                         + "||"
                     )
                 else:
                     reply += (
-                        self.resolve_bool_roll(x.split()) + "\n"
+                        self.resolve_bool_roll(x.split())
                     )
+                
+                reply += "\n"
             await message.channel.send(reply)
 
     # -----

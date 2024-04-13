@@ -61,10 +61,76 @@ class Utils(commands.Cog):
         help_data = {
             "title": "D&D 4e Help Bot",
             "fields": [
+                {"name": "Glossary",
+                "value": ";;glossary",
+                "inline": True},
+                {"name": "Race",
+                "value": ";;race",
+                "inline": True},
+                {"name": "background",
+                "value": ";;background",
+                "inline": True},
+                {"name": "Theme",
+                "value": ";;theme",
+                "inline": True},
                 {"name": "Class",
-                "value": ";;eh-class",
+                "value": ";;class",
+                "inline": True},
+                {"name": "Paragon Path",
+                "value": ";;paragon",
+                "inline": True},
+                {"name": "Epic Destiny",
+                "value": ";;epic",
+                "inline": True},
+                {"name": "Power",
+                "value": ";;power",
+                "inline": True},
+                {"name": "Feat",
+                "value": ";;feat",
+                "inline": True},
+                {"name": "Ritual",
+                "value": ";;ritual",
+                "inline": True},
+                {"name": "Weapon",
+                "value": ";;weapon",
+                "inline": True},
+                {"name": "Implement",
+                "value": ";;implement",
+                "inline": True},
+                {"name": "Armor",
+                "value": ";;armor",
+                "inline": True},
+                {"name": "Companion",
+                "value": ";;companion",
+                "inline": True},
+                {"name": "Deity",
+                "value": ";;deity",
+                "inline": True},
+                {"name": "Poison",
+                "value": ";;poison",
+                "inline": True},
+                {"name": "Disease",
+                "value": ";;disease",
+                "inline": True},
+                {"name": "Monster",
+                "value": ";;monster",
+                "inline": True},
+                {"name": "Trap",
+                "value": ";;trap",
                 "inline": True},
             ],
+        }
+        embed = embed_builder(help_data)
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def help(self, ctx):
+        help_data = {
+            "title": "🍄 Help! *Wander*-ing what to do?",
+            "description": "*No worries! Here's what I can do...*\n\n**Quirky Utilities:**\n- Dice: `;;r XdY` or `[[XdY]]` \n- Spoilered Dice: `;;||r XdY ||` or `[[||XdY ||]]`\n- Ping: Pong?\n\n**Compendium:**\n- D&D 4e: `;;4e-help`",
+            "footer": {
+                "text": "... just don't tell Minstrel anything!!"
+            }
         }
         embed = embed_builder(help_data)
         await ctx.send(embed=embed)

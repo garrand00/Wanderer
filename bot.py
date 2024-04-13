@@ -15,7 +15,7 @@ for filename in os.listdir('.\cogs'):
 
 
 activity = discord.Activity(name="Don't tell Minstrel!", type=discord.ActivityType.playing)
-client = commands.Bot(command_prefix=";;", intents=discord.Intents.all(), activity=activity)
+client = commands.Bot(command_prefix=";;", intents=discord.Intents.all(), activity=activity, help_command=None)
 
 
 @client.event
